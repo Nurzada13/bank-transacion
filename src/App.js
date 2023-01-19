@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./component/header";
+import AddTransaction from "./component/AddTransaction";
+import { useState } from "react";
+import TransactionList from "./component/transactionList";
+import IncomeExpenses from "./component/incomeExpenses";
+import Balance from "./component/balance";
 
 function App() {
+  const [myExpensesGlobal, setMyExpensesGlobal] = useState([]);
+
+  console.log(myExpensesGlobal);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+      <Balance 
+      myExpensesGlobal={myExpensesGlobal}
+      />
+  <IncomeExpenses 
+  myExpensesGlobal={myExpensesGlobal}/>
+
+      <TransactionList
+       myExpensesGlobal={myExpensesGlobal}
+       setMyExpensesGlobal={setMyExpensesGlobal}
+       /> 
+
+      <AddTransaction
+       myExpensesGlobal={myExpensesGlobal} 
+        setMyExpensesGlobal={setMyExpensesGlobal}
+        />
+
+
+       
+    </>
+
+  )
 }
 
 export default App;
+ 
